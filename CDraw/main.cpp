@@ -1,17 +1,24 @@
 #include <QApplication>
-#include <QMainWindow>
+#include <QtWidgets>
+#include "Window.h"
+#include <QLabel>
 
 
 int main(int argc, char *argv[]){
     QApplication app(argc, argv);
+        printf ( "*** prepare ***\r\n" );
 
-    QMainWindow win;
-    win.setCentralWidget(  );
+
+    Window win; // hidden constructor ?? -> Window win = & ( new Window());
+    QLabel label;
+    QTextEdit *textEdit = new QTextEdit() ;
+
+
+    win.setCentralWidget( textEdit );
     win.resize(400,300);
     win.show();
    // Dialog w = new Dialog();
    // w.show();
-   // int result = app.exec();
-    printf ( "*** start ***\r\n" );
-    return 0;
+
+    return app.exec();
 }
