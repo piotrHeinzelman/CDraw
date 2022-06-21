@@ -1,21 +1,20 @@
 #include <QApplication>
-#include <QtWidgets>
-#include "Window.h"
-#include <QLabel>
-
+#include <QMainWindow>
 
 int main(int argc, char *argv[]){
     QApplication app(argc, argv);
         printf ( "*** prepare ***\r\n" );
 
-    Window *win = new Window( NULL );
-    QTextEdit textEdit = new QTextEdit( QWidget win );
+    QMainWindow *win = new QMainWindow();
 
+    //QTextEdit textEdit = new QTextEdit( QWidget win );
     // hidden constructor ?? -> Window win = & ( new Window());
-    QLabel label;
+    //QLabel label;
 
+    win->show();
+    int result=app.exec();
+    delete win;
+    printf ( "*** destroy ***\r\n" );
+    return result;
 
-
-
-    return app.exec();
 }
