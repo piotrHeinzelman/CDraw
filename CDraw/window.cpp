@@ -1,28 +1,6 @@
-#include "Window.h"
+#include "window.h"
 
-    // constructor
-    Window::Window( QTextEdit *textEdit ){
-
-     //   this->setCentralWidget( textEdit );
-     //   this->resize(400,300);
-     //   this->show();
-
-    }
-
-    //destructor
-    Window::~Window(){
-     printf("\r\nwhy?","%s");
-    }
-
-
-/*
-
-#include "nowaklasa.h"
-
-nowaKlasa::nowaKlasa(QWidget *parent) : QWidget(parent)
+Window::Window(QWidget *parent) : QMainWindow(parent)
 {
 
 }
-
-
-*/

@@ -1,5 +1,6 @@
 #include <QApplication>
 #include <QMainWindow>
+#include "qarray.h"
 
 int main(int argc, char *argv[]){
     QApplication app(argc, argv);
@@ -12,9 +13,14 @@ int main(int argc, char *argv[]){
     //QLabel label;
 
     win->show();
-    int result=app.exec();
+
+    QArray ary;
+  //          ary.push( win );
+
+    int result = app.exec();
     delete win;
     printf ( "*** destroy ***\r\n" );
-    return result;
+    if (false) return result;
+    return 1; //result;
 
 }

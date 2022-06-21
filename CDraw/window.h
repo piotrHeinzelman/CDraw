@@ -2,23 +2,19 @@
 #define WINDOW_H
 
 #include <QMainWindow>
-#include <QTextEdit>
 
-class Window : public QMainWindow {
+class Window : public QMainWindow
+{
     Q_OBJECT
 
+private:
+    QObject children[10];
+
 public:
-    // constructor
-    // Window();
     explicit Window(QWidget *parent = nullptr);
-
-
-
-    //destructor
-    ~Window();
 
 signals:
 
 };
 
-#endif //WINDOW_H
+#endif // WINDOW_H
