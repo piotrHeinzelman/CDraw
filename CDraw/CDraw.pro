@@ -10,10 +10,12 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    Window.cpp
+    Window.cpp \
+    nowaklasa.cpp
 
 HEADERS += \
-    Window.h
+    Window.h \
+    nowaklasa.h
 
 #FORMS += \
 #    mainwindow.ui
