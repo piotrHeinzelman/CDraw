@@ -26,8 +26,8 @@ QT_BEGIN_NAMESPACE
 class Ui_painter
 {
 public:
-    QAction *actionSave;
-    QAction *actionQuit;
+    QAction *saveMenuItem;
+    QAction *QuitMenuItem;
     QWidget *centralwidget;
     QPushButton *addButton;
     QPushButton *delButton;
@@ -42,11 +42,12 @@ public:
         if (painter->objectName().isEmpty())
             painter->setObjectName(QString::fromUtf8("painter"));
         painter->resize(800, 600);
-        actionSave = new QAction(painter);
-        actionSave->setObjectName(QString::fromUtf8("actionSave"));
-        actionQuit = new QAction(painter);
-        actionQuit->setObjectName(QString::fromUtf8("actionQuit"));
-        actionQuit->setCheckable(false);
+        painter->setMouseTracking(true);
+        saveMenuItem = new QAction(painter);
+        saveMenuItem->setObjectName(QString::fromUtf8("saveMenuItem"));
+        QuitMenuItem = new QAction(painter);
+        QuitMenuItem->setObjectName(QString::fromUtf8("QuitMenuItem"));
+        QuitMenuItem->setCheckable(false);
         centralwidget = new QWidget(painter);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         addButton = new QPushButton(centralwidget);
@@ -73,9 +74,9 @@ public:
         painter->setStatusBar(statusbar);
 
         menubar->addAction(menuFile->menuAction());
-        menuFile->addAction(actionSave);
+        menuFile->addAction(saveMenuItem);
         menuFile->addSeparator();
-        menuFile->addAction(actionQuit);
+        menuFile->addAction(QuitMenuItem);
 
         retranslateUi(painter);
 
@@ -85,8 +86,8 @@ public:
     void retranslateUi(QMainWindow *painter)
     {
         painter->setWindowTitle(QApplication::translate("painter", "painter", nullptr));
-        actionSave->setText(QApplication::translate("painter", "Save", nullptr));
-        actionQuit->setText(QApplication::translate("painter", "Quit", nullptr));
+        saveMenuItem->setText(QApplication::translate("painter", "Save", nullptr));
+        QuitMenuItem->setText(QApplication::translate("painter", "Quit", nullptr));
         addButton->setText(QApplication::translate("painter", "Add", nullptr));
         delButton->setText(QApplication::translate("painter", "Remove", nullptr));
         label->setText(QApplication::translate("painter", "TextLabel", nullptr));

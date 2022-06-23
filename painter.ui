@@ -80,19 +80,19 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionSave"/>
+    <addaction name="saveMenuItem"/>
     <addaction name="separator"/>
-    <addaction name="actionQuit"/>
+    <addaction name="QuitMenuItem"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionSave">
+  <action name="saveMenuItem">
    <property name="text">
     <string>Save</string>
    </property>
   </action>
-  <action name="actionQuit">
+  <action name="QuitMenuItem">
    <property name="checkable">
     <bool>false</bool>
    </property>
@@ -103,4 +103,7 @@
  </widget>
  <resources/>
  <connections/>
+ <slots>
+  <slot>mainSlotAddPoint()</slot>
+ </slots>
 </ui>

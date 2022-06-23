@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QPushButton>
 
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class painter; }
 QT_END_NAMESPACE
@@ -18,11 +19,28 @@ public:
 
     void setStatusBarText( const QString &str );
 
+    // events
+    void mainSlotAddPoint( QEvent *e );
+
+    // Slots
+    void slotQuit();
+    void slotSave();
+    void slotAdd();
+    void slotRemove();
+
+
+
+
 
 private:
     Ui::painter *ui;
-    QPushButton *add;
-    QPushButton *del;
+    QPushButton *addBtn;
+    QPushButton *delBtn;
     QStatusBar  *statBar;
+
+
+
+
+
 };
 #endif // PAINTER_H
