@@ -18,7 +18,7 @@ painter::painter(QWidget *parent) : QMainWindow(parent) , ui(new Ui::painter) {
 
 
           add->addAction( addPointAction );
-    this->statBar->showMessage("abc");
+    setStatusBarText("Zaczynamy...");
 
 }
 
