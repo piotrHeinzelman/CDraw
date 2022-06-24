@@ -1,66 +1,44 @@
 #include "painter.h"
 #include "ui_painter.h"
 #include <QPushButton>
-
+#include <QLabel>
 
 painter::painter(QWidget *parent) : QMainWindow(parent) , ui(new Ui::painter) {
     ui->setupUi(this);
 
     this->addBtn = ui->addButton;
     this->delBtn = ui->delButton;
+    this->saveBtn = ui->saveButton;
+    this->loadBtn = ui->loadButton;
+    this->exitBtn = ui->exitButton;
 
-    QAction *saveBtn = ui->saveMenuItem;
-    QAction *quitBtn = ui->QuitMenuItem;
+    this->labelW = ui->labelWgt;
+
 
     this->statBar = ui->statusbar;
 
 
-
-
-    connect( addBtn , &QPushButton::released, this, &painter::slotQuit );
-    connect( saveBtn , &QAction::toggled, this, &painter::slotSave );
-    connect( quitBtn , &QAction::toggled, this, &painter::slotAdd );
+    connect( addBtn , &QPushButton::released, this, &painter::slotExit );
     connect( delBtn , &QPushButton::released, this, &painter::slotRemove );
-
-
-    // addBtn->addAction( addAct );
-
-
-
-
-
-
-    // CREATE ACTIONS !!!
-
-    // Create action ( name )
-//    QAction *addAct = new QAction("ACT ADD SEGMENT", parent );
-//    QAction *delAct = new QAction("ACT DELETE SEGMENT", parent );
-//    QAction *saveAct = new QAction("ACT SAVE", parent );
-//    QAction *quitAct = new QAction("ACT QUIT", parent );
-
-
-
-    //connect( addBtn, &QAction::triggered , this , &this::close  );
-
-         //    addAct->connect( addBtn , &QAction::triggered , this, &this::setStatusBarText("?") );
-             //addAct->setShortcut(QKeySequence::Quit);
-            //addAct->setStatusTip("add point");
-   //Connecy ( action, signal , this , slot );
-   //connect( addAct, &QAction::triggered, this,  &this::close );
-
-    // button to action
+    connect( saveBtn , &QPushButton::released, this, &painter::slotSave );
+    connect( loadBtn , &QPushButton::released, this, &painter::slotLoad );
+    connect( exitBtn , &QPushButton::released, this, &painter::slotExit );
 
 
 }
 
 
 // Slots
-void painter::slotQuit(){
+void painter::slotExit(){
     setStatusBarText( "slot QUIT activated !" );
 }
 
 void painter::slotSave(){
     setStatusBarText( "slot Save activated !" );
+}
+
+void painter::slotLoad(){
+    setStatusBarText( "slot Load activated !" );
 }
 
 void painter::slotAdd(){
@@ -69,6 +47,13 @@ void painter::slotAdd(){
 
 void painter::slotRemove(){
     setStatusBarText( "slot Remove activated !" );
+}
+
+
+
+
+void painter::clickCatch(){
+    setStatusBarText( "click" );
 }
 
 
@@ -83,3 +68,21 @@ painter::~painter() {
     delete ui;
 }
 
+
+
+
+
+
+/*
+
+QPicture pi;
+QPainter p(&pi);
+p.setRenderHint(QPainter::Antialiasing);
+p.setPen(QPen(Qt::black, 12, Qt::DashDotLine, Qt::RoundCap));
+p.drawLine(0, 0, 200, 200);
+p.end(); // Don't forget this line!
+
+QLabel l;
+l.setPicture(pi);
+l.show();
+*/

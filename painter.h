@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QPushButton>
+#include <QLabel>
 
 
 QT_BEGIN_NAMESPACE
@@ -23,11 +24,12 @@ public:
     void mainSlotAddPoint( QEvent *e );
 
     // Slots
-    void slotQuit();
+    void slotExit();
     void slotSave();
+    void slotLoad();
     void slotAdd();
     void slotRemove();
-
+    void clickCatch();
 
 
 
@@ -36,8 +38,12 @@ private:
     Ui::painter *ui;
     QPushButton *addBtn;
     QPushButton *delBtn;
+    QPushButton *saveBtn;
+    QPushButton *loadBtn;
+    QPushButton *exitBtn;
     QStatusBar  *statBar;
 
+    QLabel *labelW;
 
 
 

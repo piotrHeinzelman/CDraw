@@ -15,8 +15,6 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenu>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
@@ -32,9 +30,10 @@ public:
     QPushButton *addButton;
     QPushButton *delButton;
     QLineEdit *lineEdit;
-    QLabel *label;
-    QMenuBar *menubar;
-    QMenu *menuFile;
+    QLabel *labelWgt;
+    QPushButton *saveButton;
+    QPushButton *loadButton;
+    QPushButton *exitButton;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *painter)
@@ -59,24 +58,24 @@ public:
         lineEdit = new QLineEdit(centralwidget);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
         lineEdit->setGeometry(QRect(10, 40, 81, 21));
-        label = new QLabel(centralwidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(190, 10, 601, 541));
+        labelWgt = new QLabel(centralwidget);
+        labelWgt->setObjectName(QString::fromUtf8("labelWgt"));
+        labelWgt->setGeometry(QRect(190, 40, 601, 511));
+        labelWgt->setCursor(QCursor(Qt::PointingHandCursor));
+        labelWgt->setMouseTracking(true);
+        saveButton = new QPushButton(centralwidget);
+        saveButton->setObjectName(QString::fromUtf8("saveButton"));
+        saveButton->setGeometry(QRect(280, 10, 80, 21));
+        loadButton = new QPushButton(centralwidget);
+        loadButton->setObjectName(QString::fromUtf8("loadButton"));
+        loadButton->setGeometry(QRect(190, 10, 80, 21));
+        exitButton = new QPushButton(centralwidget);
+        exitButton->setObjectName(QString::fromUtf8("exitButton"));
+        exitButton->setGeometry(QRect(370, 10, 80, 21));
         painter->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(painter);
-        menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 18));
-        menuFile = new QMenu(menubar);
-        menuFile->setObjectName(QString::fromUtf8("menuFile"));
-        painter->setMenuBar(menubar);
         statusbar = new QStatusBar(painter);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         painter->setStatusBar(statusbar);
-
-        menubar->addAction(menuFile->menuAction());
-        menuFile->addAction(saveMenuItem);
-        menuFile->addSeparator();
-        menuFile->addAction(QuitMenuItem);
 
         retranslateUi(painter);
 
@@ -90,8 +89,10 @@ public:
         QuitMenuItem->setText(QApplication::translate("painter", "Quit", nullptr));
         addButton->setText(QApplication::translate("painter", "Add", nullptr));
         delButton->setText(QApplication::translate("painter", "Remove", nullptr));
-        label->setText(QApplication::translate("painter", "TextLabel", nullptr));
-        menuFile->setTitle(QApplication::translate("painter", "File", nullptr));
+        labelWgt->setText(QApplication::translate("painter", "TextLabel", nullptr));
+        saveButton->setText(QApplication::translate("painter", "Save", nullptr));
+        loadButton->setText(QApplication::translate("painter", "Load", nullptr));
+        exitButton->setText(QApplication::translate("painter", "Exit", nullptr));
     } // retranslateUi
 
 };
