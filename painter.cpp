@@ -2,8 +2,20 @@
 #include "ui_painter.h"
 #include <QPushButton>
 #include <QLabel>
+#include <QPicture>
+#include <QGraphicsWidget>
+#include <QGraphicsView>
+#include <QLine>
+#include <QPoint>
+#include <QPen>
+#include <QPicture>
+#include <QPainter>
+#include <QMouseEvent>
+#include <iostream>
 
-painter::painter(QWidget *parent) : QMainWindow(parent) , ui(new Ui::painter) {
+
+
+Painter::Painter(QWidget *parent) : QMainWindow(parent) , ui(new Ui::painter) {
     ui->setupUi(this);
 
     this->addBtn = ui->addButton;
@@ -18,41 +30,61 @@ painter::painter(QWidget *parent) : QMainWindow(parent) , ui(new Ui::painter) {
     this->statBar = ui->statusbar;
 
 
-    connect( addBtn , &QPushButton::released, this, &painter::slotExit );
-    connect( delBtn , &QPushButton::released, this, &painter::slotRemove );
-    connect( saveBtn , &QPushButton::released, this, &painter::slotSave );
-    connect( loadBtn , &QPushButton::released, this, &painter::slotLoad );
-    connect( exitBtn , &QPushButton::released, this, &painter::slotExit );
+    connect( addBtn , &QPushButton::released, this, &Painter::slotAdd );
+    connect( delBtn , &QPushButton::released, this, &Painter::slotRemove );
+    connect( saveBtn , &QPushButton::released, this, &Painter::slotSave );
+    connect( loadBtn , &QPushButton::released, this, &Painter::slotLoad );
+    connect( exitBtn , &QPushButton::released, this, &Painter::slotExit );
+
+   // connect( this , &QMouseEvevent::mousePressEvent, this, &Painter::slotExit );
 
 
 }
 
 
 // Slots
-void painter::slotExit(){
+void Painter::slotExit(){
     setStatusBarText( "slot QUIT activated !" );
 }
 
-void painter::slotSave(){
+void Painter::slotSave(){
     setStatusBarText( "slot Save activated !" );
 }
 
-void painter::slotLoad(){
+void Painter::slotLoad(){
     setStatusBarText( "slot Load activated !" );
 }
 
-void painter::slotAdd(){
+void Painter::slotAdd(){
+
+
+
+
+    QPicture pi;
+    QPainter p ( &pi );
+    p.setRenderHint(QPainter::Antialiasing);
+    p.setPen(QPen(Qt::black, 12, Qt::DashDotLine, Qt::RoundCap));
+    p.drawLine(0, 0, 200, 200);
+    p.end(); // Don't forget this line!
+
+    labelW->clear();
+    labelW->setPicture(pi);
+    labelW->setPicture(pi);
+    labelW->show();
+
     setStatusBarText( "slot Add activated !" );
 }
 
-void painter::slotRemove(){
+void Painter::slotRemove(){
+
+
     setStatusBarText( "slot Remove activated !" );
 }
 
 
 
 
-void painter::clickCatch(){
+void Painter::clickCatch(){
     setStatusBarText( "click" );
 }
 
@@ -60,18 +92,23 @@ void painter::clickCatch(){
 
 
 
-void painter::setStatusBarText( const QString &str ){
+void Painter::setStatusBarText( const QString &str ){
     this->statBar->showMessage( str );
 }
 
-painter::~painter() {
+Painter::~Painter() {
     delete ui;
 }
 
 
 
 
+void Painter::mouseReleaseEvent(QMouseEvent *event) {
+    QPointF point = event->localPos();
 
+    const QString info = QString().asprintf( "%0.f", point.x());
+   this->setStatusBarText( info );
+};
 
 /*
 

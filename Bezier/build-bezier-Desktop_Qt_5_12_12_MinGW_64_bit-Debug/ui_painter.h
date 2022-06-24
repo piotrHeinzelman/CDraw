@@ -62,7 +62,7 @@ public:
         labelWgt->setObjectName(QString::fromUtf8("labelWgt"));
         labelWgt->setGeometry(QRect(190, 40, 601, 511));
         labelWgt->setCursor(QCursor(Qt::PointingHandCursor));
-        labelWgt->setMouseTracking(true);
+        labelWgt->setMouseTracking(false);
         saveButton = new QPushButton(centralwidget);
         saveButton->setObjectName(QString::fromUtf8("saveButton"));
         saveButton->setGeometry(QRect(280, 10, 80, 21));

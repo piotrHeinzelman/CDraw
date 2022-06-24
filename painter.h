@@ -4,19 +4,20 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include <QLabel>
+#include <QMouseEvent>
 
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class painter; }
 QT_END_NAMESPACE
 
-class painter : public QMainWindow
+class Painter : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    painter(QWidget *parent = nullptr);
-    ~painter();
+    Painter(QWidget *parent = nullptr);
+    ~Painter();
 
     void setStatusBarText( const QString &str );
 
@@ -46,7 +47,8 @@ private:
     QLabel *labelW;
 
 
-
+public:
+    void mouseReleaseEvent(QMouseEvent *event) override;
 
 };
 #endif // PAINTER_H

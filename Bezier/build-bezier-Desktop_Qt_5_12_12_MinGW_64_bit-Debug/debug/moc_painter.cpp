@@ -20,25 +20,25 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_painter_t {
+struct qt_meta_stringdata_Painter_t {
     QByteArrayData data[1];
     char stringdata0[8];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_painter_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_Painter_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_painter_t qt_meta_stringdata_painter = {
+static const qt_meta_stringdata_Painter_t qt_meta_stringdata_Painter = {
     {
-QT_MOC_LITERAL(0, 0, 7) // "painter"
+QT_MOC_LITERAL(0, 0, 7) // "Painter"
 
     },
-    "painter"
+    "Painter"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_painter[] = {
+static const uint qt_meta_data_Painter[] = {
 
  // content:
        8,       // revision
@@ -54,7 +54,7 @@ static const uint qt_meta_data_painter[] = {
        0        // eod
 };
 
-void painter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void Painter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     Q_UNUSED(_o);
     Q_UNUSED(_id);
@@ -62,30 +62,30 @@ void painter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
     Q_UNUSED(_a);
 }
 
-QT_INIT_METAOBJECT const QMetaObject painter::staticMetaObject = { {
+QT_INIT_METAOBJECT const QMetaObject Painter::staticMetaObject = { {
     &QMainWindow::staticMetaObject,
-    qt_meta_stringdata_painter.data,
-    qt_meta_data_painter,
+    qt_meta_stringdata_Painter.data,
+    qt_meta_data_Painter,
     qt_static_metacall,
     nullptr,
     nullptr
 } };
 
 
-const QMetaObject *painter::metaObject() const
+const QMetaObject *Painter::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *painter::qt_metacast(const char *_clname)
+void *Painter::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_painter.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_Painter.stringdata0))
         return static_cast<void*>(this);
     return QMainWindow::qt_metacast(_clname);
 }
 
-int painter::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int Painter::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QMainWindow::qt_metacall(_c, _id, _a);
     return _id;
