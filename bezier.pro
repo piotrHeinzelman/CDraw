@@ -11,11 +11,13 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     painter.cpp \
-    point.cpp
+    point.cpp \
+    segment.cpp
 
 HEADERS += \
     painter.h \
-    point.h
+    point.h \
+    segment.h
 
 FORMS += \
     painter.ui

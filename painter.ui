@@ -52,6 +52,9 @@
       <height>21</height>
      </rect>
     </property>
+    <property name="text">
+     <string>10,11</string>
+    </property>
    </widget>
    <widget class="QLabel" name="labelWgt">
     <property name="geometry">
@@ -120,6 +123,9 @@
       <height>21</height>
      </rect>
     </property>
+    <property name="text">
+     <string>22,23</string>
+    </property>
    </widget>
    <widget class="QLineEdit" name="imputEnd">
     <property name="geometry">
@@ -129,6 +135,9 @@
       <width>51</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="text">
+     <string>30,32</string>
     </property>
    </widget>
   </widget>

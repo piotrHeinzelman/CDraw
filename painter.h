@@ -47,6 +47,8 @@ private:
     QLabel *labelW;
 
 
+
+
 public:
     void mouseReleaseEvent(QMouseEvent *event) override;
 

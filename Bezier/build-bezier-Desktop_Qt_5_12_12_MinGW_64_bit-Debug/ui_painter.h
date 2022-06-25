@@ -97,10 +97,13 @@ public:
         QuitMenuItem->setText(QApplication::translate("painter", "Quit", nullptr));
         addButton->setText(QApplication::translate("painter", "Add", nullptr));
         delButton->setText(QApplication::translate("painter", "Remove", nullptr));
+        inputStart->setText(QApplication::translate("painter", "10,11", nullptr));
         labelWgt->setText(QApplication::translate("painter", "TextLabel", nullptr));
         saveButton->setText(QApplication::translate("painter", "Save", nullptr));
         loadButton->setText(QApplication::translate("painter", "Load", nullptr));
         exitButton->setText(QApplication::translate("painter", "Exit", nullptr));
+        inputCenter->setText(QApplication::translate("painter", "22,23", nullptr));
+        imputEnd->setText(QApplication::translate("painter", "30,32", nullptr));
     } // retranslateUi
 
 };

@@ -18,5 +18,5 @@ Point::Point( QLineEdit *input /*, Painter *painter */){
 
 
 QString Point::toString() {
-    return  QString("[").append(QString().asprintf( "%i" , this->x())).append(", ").append( QString().asprintf( "%i" , this->y() )).append("]\r\n");
+    return  QString("[").append(QString().asprintf( "%i" , this->x())).append(", ").append( QString().asprintf( "%i" , this->y() )).append("]");
 }
