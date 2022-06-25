@@ -12,8 +12,10 @@
 #include <QPainter>
 #include <QMouseEvent>
 #include <iostream>
-#include "point.h"
+#include "msegment.h"
+#include "mpoint.h"
 #include <QPen>
+
 
 
 
@@ -66,30 +68,27 @@ void Painter::slotLoad(){
 
 void Painter::slotAdd(){
 
-    Point *p = new Point( ui->inputStart );
+    MPoint *p = new MPoint( ui->inputStart );
     setStatusBarText( p->toString() );
 }
 
 void Painter::slotRemove(){
 
+    MPoint *start =  new MPoint( ui->inputStart );
+    MPoint *center = new MPoint( ui->inputCenter );
+    MPoint *end =   new MPoint( ui->inputEnd );
+
+    //MSegment *seg = new MSegment( start, center, end );
+
+    //drawSegment( seg );
     draw();
+
+    //delete seg;
+    delete start;
+    delete center;
+    delete end;
     return;
 
-    QPicture pi;
-    QPainter p ( &pi );
-    p.setRenderHint(QPainter::Antialiasing);
-    p.setPen(QPen(Qt::black, 12, Qt::DashDotLine, Qt::RoundCap));
-    p.drawLine(0, 0, 200, 200);
-    p.end(); // Don't forget this line!
-
-    labelW->clear();
-    labelW->setPicture(pi);
-    labelW->setPicture(pi);
-    labelW->show();
-
-    setStatusBarText( "slot Add activated !" );
-
-    setStatusBarText( "slot Remove activated !" );
 }
 
 
@@ -122,6 +121,12 @@ void Painter::mouseReleaseEvent(QMouseEvent *event) {
    this->setStatusBarText( info );
 };
 
+/*
+void Painter::drawSegment( MSegment *seg ){
+    p->drawLine( seg->start->x(), seg->start->y(), seg->end->x(), seg->end->y() );
+}
+*/
+
 
 void Painter::draw(){
 
@@ -135,16 +140,3 @@ void Painter::draw(){
 
 };
 
-/*
-
-QPicture pi;
-QPainter p(&pi);
-p.setRenderHint(QPainter::Antialiasing);
-p.setPen(QPen(Qt::black, 12, Qt::DashDotLine, Qt::RoundCap));
-p.drawLine(0, 0, 200, 200);
-p.end(); // Don't forget this line!
-
-QLabel l;
-l.setPicture(pi);
-l.show();
-*/

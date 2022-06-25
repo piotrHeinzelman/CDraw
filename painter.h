@@ -6,6 +6,9 @@
 #include <QLabel>
 #include <QMouseEvent>
 #include <QPen>
+#include "mpoint.h"
+#include "msegment.h"
+
 
 
 QT_BEGIN_NAMESPACE
@@ -14,14 +17,17 @@ QT_END_NAMESPACE
 
 class Painter : public QMainWindow
 {
-    Q_OBJECT
+  //  Q_OBJECT
 
 public:
     Painter(QWidget *parent = nullptr);
     ~Painter();
+
     void draw();
+   // void drawSegment( MSegment *seg );
 
     void setStatusBarText( const QString &str );
+
 
     // events
     void mainSlotAddPoint( QEvent *e );

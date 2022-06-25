@@ -1,9 +1,11 @@
-#include "point.h"
-#include <QPointF>
+#include "mpoint.h"
+#include <QPoint>
 #include "painter.h"
 
 
-Point::Point( QLineEdit *input /*, Painter *painter */){
+MPoint::MPoint(){};
+
+MPoint::MPoint( QLineEdit *input /*, Painter *painter */){
     QString string = input->text();
     QStringList ary = string.split(",");
     if ( ary.length()<2 ) return;
@@ -17,6 +19,6 @@ Point::Point( QLineEdit *input /*, Painter *painter */){
     }
 
 
-QString Point::toString() {
+QString MPoint::toString() {
     return  QString("[").append(QString().asprintf( "%i" , this->x())).append(", ").append( QString().asprintf( "%i" , this->y() )).append("]");
 }
