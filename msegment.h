@@ -8,7 +8,7 @@ class MSegment : public QObject {
     //Q_OBJECT
 public:
     MSegment();
-    MSegment( MPoint *start , MPoint *center, MPoint  *end );
+    MSegment( MPoint * start , MPoint * center, MPoint  * end );
     ~MSegment();
 
 

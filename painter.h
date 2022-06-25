@@ -28,6 +28,8 @@ public:
 
     void setStatusBarText( const QString &str );
 
+    MSegment * readSegmentFromInput();
+
 
     // events
     void mainSlotAddPoint( QEvent *e );

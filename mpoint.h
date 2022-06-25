@@ -3,14 +3,15 @@
 
 #include <QPoint>
 #include <QLineEdit>
-#include "painter.h"
+
+
 
 
 class MPoint : public QPoint
 {
 public:
     MPoint();
-    MPoint( QLineEdit *input /*, Painter *painter*/);
+    MPoint( QLineEdit *input );
     QString toString();
 };
 

@@ -1,11 +1,11 @@
 #include "mpoint.h"
 #include <QPoint>
-#include "painter.h"
+
 
 
 MPoint::MPoint(){};
 
-MPoint::MPoint( QLineEdit *input /*, Painter *painter */){
+MPoint::MPoint( QLineEdit *input ){
     QString string = input->text();
     QStringList ary = string.split(",");
     if ( ary.length()<2 ) return;

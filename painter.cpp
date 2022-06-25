@@ -74,9 +74,7 @@ void Painter::slotAdd(){
 
 void Painter::slotRemove(){
 
-    MPoint *start =  new MPoint( ui->inputStart );
-    MPoint *center = new MPoint( ui->inputCenter );
-    MPoint *end =   new MPoint( ui->inputEnd );
+
 
     //MSegment *seg = new MSegment( start, center, end );
 
@@ -84,9 +82,7 @@ void Painter::slotRemove(){
     draw();
 
     //delete seg;
-    delete start;
-    delete center;
-    delete end;
+
     return;
 
 }
@@ -110,6 +106,14 @@ Painter::~Painter() {
     delete ui;
 }
 
+
+
+MSegment* Painter::readSegmentFromInput(){
+    MPoint *start =  new MPoint( ui->inputStart );
+    MPoint *center = new MPoint( ui->inputCenter );
+    MPoint *end =   new MPoint( ui->inputEnd );
+    return new MSegment( start, center, end );
+}
 
 
 
