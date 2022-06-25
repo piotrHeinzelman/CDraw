@@ -224,6 +224,7 @@ Makefile: ../../bezier.pro C:/opt/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/win32-
 		C:/opt/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/qt_config.prf \
 		C:/opt/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/win32-g++/qmake.conf \
 		C:/opt/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		C:/opt/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/exclusive_builds.prf \
 		C:/opt/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/toolchain.prf \
 		C:/opt/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/default_pre.prf \
@@ -413,6 +414,7 @@ C:/opt/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/qt_functions.prf:
 C:/opt/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/qt_config.prf:
 C:/opt/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/win32-g++/qmake.conf:
 C:/opt/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 C:/opt/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/exclusive_builds.prf:
 C:/opt/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/toolchain.prf:
 C:/opt/Qt/Qt5.12.12/5.12.12/mingw73_64/mkspecs/features/default_pre.prf:

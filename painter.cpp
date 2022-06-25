@@ -12,6 +12,7 @@
 #include <QPainter>
 #include <QMouseEvent>
 #include <iostream>
+#include "point.h"
 
 
 
@@ -57,6 +58,11 @@ void Painter::slotLoad(){
 
 void Painter::slotAdd(){
 
+    Point *p = new Point( ui->inputStart );
+    setStatusBarText( p->toString() );
+}
+
+void Painter::slotRemove(){
 
 
 
@@ -73,10 +79,6 @@ void Painter::slotAdd(){
     labelW->show();
 
     setStatusBarText( "slot Add activated !" );
-}
-
-void Painter::slotRemove(){
-
 
     setStatusBarText( "slot Remove activated !" );
 }
@@ -104,6 +106,7 @@ Painter::~Painter() {
 
 
 void Painter::mouseReleaseEvent(QMouseEvent *event) {
+
     QPointF point = event->localPos();
 
     const QString info = QString().asprintf( "%0.f", point.x());
