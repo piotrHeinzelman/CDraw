@@ -35,7 +35,7 @@ public:
     QPushButton *loadButton;
     QPushButton *exitButton;
     QLineEdit *inputCenter;
-    QLineEdit *imputEnd;
+    QLineEdit *inputEnd;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *painter)
@@ -77,9 +77,9 @@ public:
         inputCenter = new QLineEdit(centralwidget);
         inputCenter->setObjectName(QString::fromUtf8("inputCenter"));
         inputCenter->setGeometry(QRect(70, 40, 51, 21));
-        imputEnd = new QLineEdit(centralwidget);
-        imputEnd->setObjectName(QString::fromUtf8("imputEnd"));
-        imputEnd->setGeometry(QRect(130, 40, 51, 21));
+        inputEnd = new QLineEdit(centralwidget);
+        inputEnd->setObjectName(QString::fromUtf8("inputEnd"));
+        inputEnd->setGeometry(QRect(130, 40, 51, 21));
         painter->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(painter);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -103,7 +103,7 @@ public:
         loadButton->setText(QApplication::translate("painter", "Load", nullptr));
         exitButton->setText(QApplication::translate("painter", "Exit", nullptr));
         inputCenter->setText(QApplication::translate("painter", "22,23", nullptr));
-        imputEnd->setText(QApplication::translate("painter", "30,32", nullptr));
+        inputEnd->setText(QApplication::translate("painter", "30,32", nullptr));
     } // retranslateUi
 
 };

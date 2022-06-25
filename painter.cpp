@@ -13,6 +13,7 @@
 #include <QMouseEvent>
 #include <iostream>
 #include "point.h"
+#include <QPen>
 
 
 
@@ -39,6 +40,13 @@ Painter::Painter(QWidget *parent) : QMainWindow(parent) , ui(new Ui::painter) {
 
    // connect( this , &QMouseEvevent::mousePressEvent, this, &Painter::slotExit );
 
+    redPen   = new QPen(Qt::darkGreen, 2);
+    greenPen = new QPen(Qt::red, 2);
+
+    pi = new QPicture();
+    p  = new QPainter( pi );
+    p->setRenderHint(QPainter::Antialiasing);
+    p->setPen( *redPen );
 
 }
 
@@ -64,7 +72,8 @@ void Painter::slotAdd(){
 
 void Painter::slotRemove(){
 
-
+    draw();
+    return;
 
     QPicture pi;
     QPainter p ( &pi );
@@ -111,6 +120,19 @@ void Painter::mouseReleaseEvent(QMouseEvent *event) {
 
     const QString info = QString().asprintf( "%0.f", point.x());
    this->setStatusBarText( info );
+};
+
+
+void Painter::draw(){
+
+    p->drawLine(0, 0, 200, 200);
+    p->end(); // Don't forget this line!
+
+    labelW->clear();
+    labelW->setPicture(*pi);
+    labelW->setPicture(*pi);
+    labelW->show();
+
 };
 
 /*

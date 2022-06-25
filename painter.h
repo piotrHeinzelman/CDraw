@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QMouseEvent>
+#include <QPen>
 
 
 QT_BEGIN_NAMESPACE
@@ -18,6 +19,7 @@ class Painter : public QMainWindow
 public:
     Painter(QWidget *parent = nullptr);
     ~Painter();
+    void draw();
 
     void setStatusBarText( const QString &str );
 
@@ -45,7 +47,11 @@ private:
     QStatusBar  *statBar;
 
     QLabel *labelW;
+    QPicture *pi;
+    QPainter *p;
 
+    QPen *redPen;
+    QPen *greenPen;
 
 
 
