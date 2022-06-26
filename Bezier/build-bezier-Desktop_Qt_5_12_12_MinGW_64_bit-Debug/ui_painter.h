@@ -36,6 +36,7 @@ public:
     QPushButton *exitButton;
     QLineEdit *inputCenter;
     QLineEdit *inputEnd;
+    QPushButton *drawButton;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *painter)
@@ -53,10 +54,10 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         addButton = new QPushButton(centralwidget);
         addButton->setObjectName(QString::fromUtf8("addButton"));
-        addButton->setGeometry(QRect(10, 10, 80, 21));
+        addButton->setGeometry(QRect(10, 10, 51, 21));
         delButton = new QPushButton(centralwidget);
         delButton->setObjectName(QString::fromUtf8("delButton"));
-        delButton->setGeometry(QRect(100, 10, 80, 21));
+        delButton->setGeometry(QRect(129, 10, 51, 21));
         inputStart = new QLineEdit(centralwidget);
         inputStart->setObjectName(QString::fromUtf8("inputStart"));
         inputStart->setGeometry(QRect(10, 40, 51, 21));
@@ -80,6 +81,9 @@ public:
         inputEnd = new QLineEdit(centralwidget);
         inputEnd->setObjectName(QString::fromUtf8("inputEnd"));
         inputEnd->setGeometry(QRect(130, 40, 51, 21));
+        drawButton = new QPushButton(centralwidget);
+        drawButton->setObjectName(QString::fromUtf8("drawButton"));
+        drawButton->setGeometry(QRect(70, 10, 51, 21));
         painter->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(painter);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -104,6 +108,7 @@ public:
         exitButton->setText(QApplication::translate("painter", "Exit", nullptr));
         inputCenter->setText(QApplication::translate("painter", "22,23", nullptr));
         inputEnd->setText(QApplication::translate("painter", "30,32", nullptr));
+        drawButton->setText(QApplication::translate("painter", "Draw", nullptr));
     } // retranslateUi
 
 };

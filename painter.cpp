@@ -29,6 +29,7 @@ Painter::Painter(QWidget *parent) : QMainWindow(parent) , ui(new Ui::painter) {
     this->saveBtn = ui->saveButton;
     this->loadBtn = ui->loadButton;
     this->exitBtn = ui->exitButton;
+    this->drawBtn = ui->drawButton;
 
     this->labelW = ui->labelWgt;
 
@@ -41,6 +42,7 @@ Painter::Painter(QWidget *parent) : QMainWindow(parent) , ui(new Ui::painter) {
     connect( saveBtn , &QPushButton::released, this, &Painter::slotSave );
     connect( loadBtn , &QPushButton::released, this, &Painter::slotLoad );
     connect( exitBtn , &QPushButton::released, this, &Painter::slotExit );
+    connect( drawBtn , &QPushButton::released, this, &Painter::draw );
 
    // connect( this , &QMouseEvevent::mousePressEvent, this, &Painter::slotExit );
 
@@ -78,9 +80,7 @@ void Painter::slotAdd(){
 }
 
 void Painter::slotRemove(){
-    draw();
-    return;
-
+  setStatusBarText( "slot Load activated !" );
 }
 
 
@@ -128,16 +128,6 @@ void Painter::mouseReleaseEvent(QMouseEvent *event) {
 };
 
 
-void Painter::drawSegment( MSegment *seg ){
-    MPoint *s = seg->getStart();
-    MPoint *c = seg->getCenter();
-    MPoint *e = seg->getEnd();
-
-    setStatusBarText( seg->toString() );
-    this->p->drawLine( s->x(), s->y(), e->x(), e->y() );
-
-}
-
 
 
 
@@ -184,5 +174,18 @@ void Painter::drawFrame(){
     this->p->drawLine(WIDTH,0,WIDTH,HEIGHT);
     this->p->drawLine(WIDTH,HEIGHT,0,HEIGHT);
     this->p->drawLine(0,HEIGHT,0,0);
+
+}
+
+
+
+void Painter::drawSegment( MSegment *seg ){
+    MPoint *s = seg->getStart();
+    MPoint *c = seg->getCenter();
+    MPoint *e = seg->getEnd();
+
+    setStatusBarText( seg->toString() );
+    this->p->drawLine( s->x(), s->y(), e->x(), e->y() );
+    this->p->drawPoint( c->x(), c->y() );
 
 }

@@ -56,6 +56,7 @@ private:
     QPushButton *saveBtn;
     QPushButton *loadBtn;
     QPushButton *exitBtn;
+    QPushButton *drawBtn;
     QStatusBar  *statBar;
 
     QLabel *labelW;
