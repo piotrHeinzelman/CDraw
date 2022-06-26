@@ -9,6 +9,7 @@
 #include "mpoint.h"
 #include "msegment.h"
 #include "mtree.h"
+#include "config.h"
 
 
 
@@ -67,10 +68,10 @@ private:
 
     MTree *tree;
 
-    const int WIDTH=400;
-    const int HEIGHT=300;
-    const int MOUSE_OFFSET_X=0;
-    const int MOUSE_OFFSET_Y=0;
+    const int WIDTH=Config::WIDTH;
+    const int HEIGHT=Config::HEIGHT;
+    const int MOUSE_OFFSET_X=Config::MOUSE_OFFSET_X;
+    const int MOUSE_OFFSET_Y=Config::MOUSE_OFFSET_Y;
 
 public:
     void mouseReleaseEvent(QMouseEvent *event) override;

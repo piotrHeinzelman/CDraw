@@ -16,6 +16,7 @@
 #include "mpoint.h"
 #include <QPen>
 #include <QRectF>
+#include "config.h"
 
 
 

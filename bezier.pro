@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    config.cpp \
     main.cpp \
     mpoint.cpp \
     msegment.cpp \
@@ -16,6 +17,7 @@ SOURCES += \
     painter.cpp
 
 HEADERS += \
+    config.h \
     mpoint.h \
     msegment.h \
     mtree.h \
