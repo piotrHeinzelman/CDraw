@@ -29,9 +29,15 @@ public:
 
     void draw();
     void drawSegment( MSegment *seg );
+    void drawSegment2( MSegment *seg );
+
     void drawFrame();
 
+
     void listRefresh();
+    void bezier();
+    double pow( double a, double b );
+
 
 
     void setStatusBarText( const QString &str );

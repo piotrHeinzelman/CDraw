@@ -18,6 +18,7 @@
 #include <QRectF>
 #include "config.h"
 #include "mitem.h"
+#include <QtMath>
 
 
 
@@ -187,7 +188,7 @@ void Painter::mouseReleaseEvent(QMouseEvent *event) {
 
 
 void Painter::draw(){
-
+    tick=-1;
 
     delete p;
     delete pi;
@@ -233,7 +234,7 @@ void Painter::drawFrame(){
 
 
 
-void Painter::drawSegment( MSegment *seg ){
+void Painter::drawSegment2( MSegment *seg ){
     MPoint *s = seg->getStart();
     MPoint *c = seg->getCenter();
     MPoint *e = seg->getEnd();
@@ -274,5 +275,41 @@ void Painter::listRefresh(){
 
 
 
+void Painter::drawSegment( MSegment *seg ){
+    MPoint *s = seg->getStart();
+    MPoint *c = seg->getCenter();
+    MPoint *e = seg->getEnd();
 
+    setStatusBarText( seg->toString() );
+   // this->p->drawLine( s->x(), s->y(), e->x(), e->y() );
+   // this->p->drawPoint( c->x(), c->y() );
+
+
+
+
+int x[4]={s->x(),c->x(),c->x(),e->x()};
+int y[4]={s->y(),c->y(),c->y(),e->y()};
+
+int i;
+double t,xt,yt;
+
+for (t = 0.0; t < 1.0; t += 0.05) {
+ xt = pow((1 - t), 2) * s->x() /*a[0]*/ + 2 * t * (1 - t) * /*b[0]*/ c->x() + pow(t, 2) * e->x()/*c[0]*/;
+ yt = pow((1 - t), 2) * s->y() /*a[1]*/ + 2 * t * (1 - t) * /*b[1]*/ c->y() + pow(t, 2) * e->y()/*c[1]*/;
+
+
+ //   xt = pow(1-t,3)*x[0]+3*t*pow(1-t,2)*x[1]+3*pow(t,2)*(1-t)*x[2]+pow(t,3)*x[3];
+//    yt = pow(1-t,3)*y[0]+3*t*pow(1-t,2)*y[1]+3*pow(t,2)*(1-t)*y[2]+pow(t,3)*y[3];
+    p->drawPoint(xt,yt);
+
+    }
+}
+
+
+
+
+
+double Painter::pow(double a, double b){
+    return qPow(a,b);
+}
 
