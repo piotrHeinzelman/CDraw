@@ -62,7 +62,7 @@ public:
         inputStart->setGeometry(QRect(10, 40, 51, 21));
         labelWgt = new QLabel(centralwidget);
         labelWgt->setObjectName(QString::fromUtf8("labelWgt"));
-        labelWgt->setGeometry(QRect(430, 40, 361, 511));
+        labelWgt->setGeometry(QRect(190, 10, 601, 561));
         labelWgt->setCursor(QCursor(Qt::PointingHandCursor));
         labelWgt->setMouseTracking(false);
         saveButton = new QPushButton(centralwidget);
@@ -98,7 +98,7 @@ public:
         addButton->setText(QApplication::translate("painter", "Add", nullptr));
         delButton->setText(QApplication::translate("painter", "Remove", nullptr));
         inputStart->setText(QApplication::translate("painter", "10,11", nullptr));
-        labelWgt->setText(QApplication::translate("painter", "TextLabel", nullptr));
+        labelWgt->setText(QString());
         saveButton->setText(QApplication::translate("painter", "Save", nullptr));
         loadButton->setText(QApplication::translate("painter", "Load", nullptr));
         exitButton->setText(QApplication::translate("painter", "Exit", nullptr));

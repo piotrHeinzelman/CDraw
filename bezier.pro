@@ -12,11 +12,13 @@ SOURCES += \
     main.cpp \
     mpoint.cpp \
     msegment.cpp \
+    mtree.cpp \
     painter.cpp
 
 HEADERS += \
     mpoint.h \
     msegment.h \
+    mtree.h \
     painter.h
 
 FORMS += \

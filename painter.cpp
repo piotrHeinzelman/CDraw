@@ -28,10 +28,13 @@ Painter::Painter(QWidget *parent) : QMainWindow(parent) , ui(new Ui::painter) {
     this->loadBtn = ui->loadButton;
     this->exitBtn = ui->exitButton;
 
+
     this->labelW = ui->labelWgt;
 
 
     this->statBar = ui->statusbar;
+
+    this->tree = new MTree();
 
 
     connect( addBtn , &QPushButton::released, this, &Painter::slotAdd );
@@ -55,7 +58,7 @@ Painter::Painter(QWidget *parent) : QMainWindow(parent) , ui(new Ui::painter) {
 
 // Slots
 void Painter::slotExit(){
-    setStatusBarText( "slot QUIT activated !" );
+    this->close();
 }
 
 void Painter::slotSave(){
@@ -68,21 +71,18 @@ void Painter::slotLoad(){
 
 void Painter::slotAdd(){
 
-    MPoint *p = new MPoint( ui->inputStart );
-    setStatusBarText( p->toString() );
+    MSegment* seg=readSegmentFromInput();
+    if (seg==NULL) return;
+    tree->addSegment( seg );
+
+  //  setStatusBarText( tree );
+
+    //MPoint *p = new MPoint( ui->inputStart );
+    //setStatusBarText( p->toString() );
 }
 
 void Painter::slotRemove(){
-
-
-
-    //MSegment *seg = new MSegment( start, center, end );
-
-    //drawSegment( seg );
     draw();
-
-    //delete seg;
-
     return;
 
 }
@@ -90,9 +90,12 @@ void Painter::slotRemove(){
 
 
 
-void Painter::clickCatch(){
-    setStatusBarText( "click" );
-}
+
+
+
+
+
+
 
 
 
@@ -112,7 +115,10 @@ MSegment* Painter::readSegmentFromInput(){
     MPoint *start =  new MPoint( ui->inputStart );
     MPoint *center = new MPoint( ui->inputCenter );
     MPoint *end =   new MPoint( ui->inputEnd );
-    return new MSegment( start, center, end );
+    MSegment *seg = new MSegment( start, center, end );
+    setStatusBarText(  seg->toString() );
+
+    return seg;
 }
 
 
@@ -125,22 +131,45 @@ void Painter::mouseReleaseEvent(QMouseEvent *event) {
    this->setStatusBarText( info );
 };
 
-/*
+
 void Painter::drawSegment( MSegment *seg ){
-    p->drawLine( seg->start->x(), seg->start->y(), seg->end->x(), seg->end->y() );
+    MPoint *s = seg->getStart();
+    MPoint *c = seg->getCenter();
+    MPoint *e = seg->getEnd();
+
+    p->drawLine( s->x(), s->y(), e->x(), e->y() );
 }
-*/
+
 
 
 void Painter::draw(){
 
-    p->drawLine(0, 0, 200, 200);
+    int i=0;
+    tree->reset();
+    MSegment* tmp;
+    while ( !tree->isLast() ) {
+        tmp=tree->getNextSegment();
+        drawSegment( tmp );
+        setStatusBarText( QString().asprintf("%i",i) ); i++;
+    }
+
+
+
+
+  /*  while( !tree->isLast() ) {
+        MSegment* current=tree->getNextSegment();
+        drawSegment( current ); }
+    this->setStatusBarText( tree->toString() );
+*/
+
     p->end(); // Don't forget this line!
 
     labelW->clear();
     labelW->setPicture(*pi);
     labelW->setPicture(*pi);
     labelW->show();
+
+    this->setStatusBarText( tree->toString() );
 
 };
 

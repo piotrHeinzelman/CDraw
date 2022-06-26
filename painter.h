@@ -8,6 +8,7 @@
 #include <QPen>
 #include "mpoint.h"
 #include "msegment.h"
+#include "mtree.h"
 
 
 
@@ -24,7 +25,7 @@ public:
     ~Painter();
 
     void draw();
-   // void drawSegment( MSegment *seg );
+    void drawSegment( MSegment *seg );
 
     void setStatusBarText( const QString &str );
 
@@ -60,6 +61,8 @@ private:
 
     QPen *redPen;
     QPen *greenPen;
+
+    MTree *tree;
 
 
 

@@ -16,6 +16,11 @@ public:
     MPoint* getCenter();
     MPoint* getEnd();
 
+    MSegment* next;
+    MSegment* prev;
+
+    QString toString();
+
 private:
     MPoint *start;
     MPoint *center;
