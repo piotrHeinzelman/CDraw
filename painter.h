@@ -74,6 +74,12 @@ private:
     MTree *tree;
     QListWidget *mList;
 
+    int tick;
+
+    MPoint *start;
+    MPoint *center;
+    MPoint *end;
+
     const int WIDTH=Config::WIDTH;
     const int HEIGHT=Config::HEIGHT;
     const int MOUSE_OFFSET_X=Config::MOUSE_OFFSET_X;

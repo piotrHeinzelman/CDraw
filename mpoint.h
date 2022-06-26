@@ -13,6 +13,7 @@ class MPoint : public QPoint
 public:
     MPoint();
     MPoint( QLineEdit *input );
+    MPoint( int x, int y );
     QString toString();
 
     const int WIDTH=Config::WIDTH;

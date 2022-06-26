@@ -25,6 +25,16 @@ MPoint::MPoint( QLineEdit *input ){
     }
 
 
+MPoint::MPoint( int x, int y ){
+    this->setX(x);
+    this->setY(y);
+    }
+
+
+
+
 QString MPoint::toString() {
     return  QString("[").append(QString().asprintf( "%i" , this->x())).append(", ").append( QString().asprintf( "%i" , this->y() )).append("]");
 }
+
+

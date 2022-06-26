@@ -10,7 +10,7 @@ MSegment::MSegment( MPoint *start , MPoint *center, MPoint *end ){
     this->start=start;
     this->center=center;
     this->end=end;
-    printf( "=== "  );
+
 };
 
 

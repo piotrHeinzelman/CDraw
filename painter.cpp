@@ -58,6 +58,8 @@ Painter::Painter(QWidget *parent) : QMainWindow(parent) , ui(new Ui::painter) {
     p->setRenderHint(QPainter::Antialiasing);
     p->setPen( *grayPen );
 
+    tick=-1;
+    draw();
 }
 
 
@@ -81,9 +83,18 @@ void Painter::slotAdd(){
     if (seg==NULL) return;
     tree->addSegment( seg );
     draw();
+
+    ui->inputStart->clear();
+    ui->inputCenter->clear();
+    ui->inputEnd->clear();
+     //center;
+     //end;
+
+
 }
 
 void Painter::slotRemove(){
+
     tree->removeChildren();
     draw();
 
@@ -115,12 +126,21 @@ Painter::~Painter() {
 
 
 MSegment* Painter::readSegmentFromInput(){
-    MPoint *start =  new MPoint( ui->inputStart );
-    MPoint *center = new MPoint( ui->inputCenter );
-    MPoint *end =   new MPoint( ui->inputEnd );
-    MSegment *seg = new MSegment( start, center, end );
-    setStatusBarText(  seg->toString() );
+     MPoint *start = new MPoint( ui->inputStart );
+     MPoint *center = new MPoint( ui->inputCenter );
+     MPoint *end =   new MPoint( ui->inputEnd );
 
+    if ( start->x()<2 || start->y()<2 ) return NULL;
+    if ( center->x()<2 || center->y()<2 ) return NULL;
+    if ( end->x()<2 || end->y()<2 ) return NULL;
+
+
+    MSegment *seg =NULL;
+    if ( start!=NULL && center!=NULL && end!=NULL ) {
+        seg = new MSegment( start, center, end );
+    }
+    if ( seg==NULL ) return NULL;
+    setStatusBarText(  seg->toString() );
     return seg;
 }
 
@@ -128,10 +148,37 @@ MSegment* Painter::readSegmentFromInput(){
 
 void Painter::mouseReleaseEvent(QMouseEvent *event) {
 
+    tick++;
+    tick=tick%3;
     QPointF point = event->localPos();
+    point.setX( point.x()-190 );
+    point.setY( point.y()-10 );
 
-    const QString info = QString().asprintf( "%0.f", point.x());
-   this->setStatusBarText( info );
+
+
+    switch( tick ){
+    case 0: start = new MPoint( point.x(), point.y() );; break;
+    case 1: center = new MPoint( point.x(), point.y() );; break;
+    case 2: end = new MPoint( point.x(), point.y() );;
+        MSegment *seg = new MSegment( start, center, end );
+        tree->addSegment( seg );
+        draw();
+        break;
+
+
+
+    }
+    this->setStatusBarText(  QString().asprintf( "%i", tick ));
+
+
+
+
+
+
+  //  QPointF point = event->localPos();
+
+   // const QString info = QString().asprintf( "%0.f", point.x());
+   //this->setStatusBarText( info );
 };
 
 
