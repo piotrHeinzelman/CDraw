@@ -31,19 +31,12 @@ void MTree::addSegment( MSegment *seg ) {
 
 
 MSegment* MTree::getNextSegment(){
-    if ( current->next != NULL ) {
-        current=current->next;
+    if ( current==NULL ) return NULL;
+    MSegment* tmp=current;
+    current->next;
+    return tmp;
     }
-    if ( current!=NULL ) return current;
-    return NULL;
-}
 
-
-bool MTree::isLast(){
-    if ( current == NULL ) return true;
-    if ( current->next == NULL) return true;
-    return false;
-};
 
 
 QString MTree::toString(){

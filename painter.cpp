@@ -15,6 +15,7 @@
 #include "msegment.h"
 #include "mpoint.h"
 #include <QPen>
+#include <QRectF>
 
 
 
@@ -28,14 +29,11 @@ Painter::Painter(QWidget *parent) : QMainWindow(parent) , ui(new Ui::painter) {
     this->loadBtn = ui->loadButton;
     this->exitBtn = ui->exitButton;
 
-
     this->labelW = ui->labelWgt;
-
 
     this->statBar = ui->statusbar;
 
     this->tree = new MTree();
-
 
     connect( addBtn , &QPushButton::released, this, &Painter::slotAdd );
     connect( delBtn , &QPushButton::released, this, &Painter::slotRemove );
@@ -47,11 +45,13 @@ Painter::Painter(QWidget *parent) : QMainWindow(parent) , ui(new Ui::painter) {
 
     redPen   = new QPen(Qt::darkGreen, 2);
     greenPen = new QPen(Qt::red, 2);
+    grayPen = new QPen(Qt::gray, 2);
+
 
     pi = new QPicture();
     p  = new QPainter( pi );
     p->setRenderHint(QPainter::Antialiasing);
-    p->setPen( *redPen );
+    p->setPen( *grayPen );
 
 }
 
@@ -74,11 +74,6 @@ void Painter::slotAdd(){
     MSegment* seg=readSegmentFromInput();
     if (seg==NULL) return;
     tree->addSegment( seg );
-
-  //  setStatusBarText( tree );
-
-    //MPoint *p = new MPoint( ui->inputStart );
-    //setStatusBarText( p->toString() );
 }
 
 void Painter::slotRemove(){
@@ -137,30 +132,29 @@ void Painter::drawSegment( MSegment *seg ){
     MPoint *c = seg->getCenter();
     MPoint *e = seg->getEnd();
 
-    p->drawLine( s->x(), s->y(), e->x(), e->y() );
+    setStatusBarText( seg->toString() );
+    this->p->drawLine( s->x(), s->y(), e->x(), e->y() );
+
 }
+
+
 
 
 
 void Painter::draw(){
 
-    int i=0;
     tree->reset();
-    MSegment* tmp;
-    while ( !tree->isLast() ) {
-        tmp=tree->getNextSegment();
-        drawSegment( tmp );
-        setStatusBarText( QString().asprintf("%i",i) ); i++;
+    drawFrame();
+    p->setPen( *greenPen );
+
+
+    MSegment* seg = tree->getNextSegment();
+    while ( seg!=NULL ) {
+        // draw
+        drawSegment( seg );
+        this->setStatusBarText( seg->toString()  );
+        seg=seg->next;
     }
-
-
-
-
-  /*  while( !tree->isLast() ) {
-        MSegment* current=tree->getNextSegment();
-        drawSegment( current ); }
-    this->setStatusBarText( tree->toString() );
-*/
 
     p->end(); // Don't forget this line!
 
@@ -173,3 +167,12 @@ void Painter::draw(){
 
 };
 
+
+void Painter::drawFrame(){
+    p->setPen(*redPen);
+    this->p->drawLine(0,0,WIDTH,0);
+    this->p->drawLine(WIDTH,0,WIDTH,HEIGHT);
+    this->p->drawLine(WIDTH,HEIGHT,0,HEIGHT);
+    this->p->drawLine(0,HEIGHT,0,0);
+
+}

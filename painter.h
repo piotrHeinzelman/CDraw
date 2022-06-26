@@ -26,6 +26,8 @@ public:
 
     void draw();
     void drawSegment( MSegment *seg );
+    void drawFrame();
+
 
     void setStatusBarText( const QString &str );
 
@@ -61,10 +63,14 @@ private:
 
     QPen *redPen;
     QPen *greenPen;
+    QPen *grayPen;
 
     MTree *tree;
 
-
+    const int WIDTH=400;
+    const int HEIGHT=300;
+    const int MOUSE_OFFSET_X=0;
+    const int MOUSE_OFFSET_Y=0;
 
 public:
     void mouseReleaseEvent(QMouseEvent *event) override;
