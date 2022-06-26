@@ -1,6 +1,6 @@
 #include "mpoint.h"
 #include <QPoint>
-#include "pain"
+
 
 
 
@@ -13,8 +13,12 @@ MPoint::MPoint( QLineEdit *input ){
 
      int x, y;
      x=ary[0].toInt();
-     if ( x > )
+     if ( x > WIDTH ) x=WIDTH-2;
+     if ( x < 2) x=2;
+
      y=ary[1].toInt();
+     if ( y > HEIGHT ) y=HEIGHT-2;
+     if ( y < 2 ) y=2;
 
     this->setX(x);
     this->setY(y);

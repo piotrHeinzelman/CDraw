@@ -144,6 +144,15 @@ void Painter::drawSegment( MSegment *seg ){
 
 void Painter::draw(){
 
+
+    delete p;
+    delete pi;
+    pi = new QPicture();
+    p  = new QPainter( pi );
+    p->setRenderHint(QPainter::Antialiasing);
+    p->setPen( *grayPen );
+
+
     tree->reset();
     drawFrame();
     p->setPen( *greenPen );

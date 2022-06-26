@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     config.cpp \
     main.cpp \
+    mfile.cpp \
     mpoint.cpp \
     msegment.cpp \
     mtree.cpp \
@@ -18,6 +19,7 @@ SOURCES += \
 
 HEADERS += \
     config.h \
+    mfile.h \
     mpoint.h \
     msegment.h \
     mtree.h \
