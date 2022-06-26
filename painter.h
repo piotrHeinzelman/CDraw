@@ -10,6 +10,8 @@
 #include "msegment.h"
 #include "mtree.h"
 #include "config.h"
+#include "mlist.h"
+#include <QListWidget>
 
 
 
@@ -28,6 +30,8 @@ public:
     void draw();
     void drawSegment( MSegment *seg );
     void drawFrame();
+
+    void listRefresh();
 
 
     void setStatusBarText( const QString &str );
@@ -68,6 +72,7 @@ private:
     QPen *grayPen;
 
     MTree *tree;
+    QListWidget *mList;
 
     const int WIDTH=Config::WIDTH;
     const int HEIGHT=Config::HEIGHT;

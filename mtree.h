@@ -11,8 +11,10 @@ public:
     bool isLast();
     MSegment* getNextSegment();
     void reset();
+    void removeChildren();
 
     QString toString();
+    void fromString( QString *string );
 
     void save();
     void load();

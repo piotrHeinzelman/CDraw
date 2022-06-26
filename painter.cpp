@@ -17,7 +17,7 @@
 #include <QPen>
 #include <QRectF>
 #include "config.h"
-
+#include "mitem.h"
 
 
 
@@ -30,6 +30,8 @@ Painter::Painter(QWidget *parent) : QMainWindow(parent) , ui(new Ui::painter) {
     this->loadBtn = ui->loadButton;
     this->exitBtn = ui->exitButton;
     this->drawBtn = ui->drawButton;
+
+    this->mList = ui->listView;
 
     this->labelW = ui->labelWgt;
 
@@ -70,6 +72,7 @@ void Painter::slotSave(){
 
 void Painter::slotLoad(){
     setStatusBarText( "slot Load activated !" );
+    draw();
 }
 
 void Painter::slotAdd(){
@@ -77,10 +80,14 @@ void Painter::slotAdd(){
     MSegment* seg=readSegmentFromInput();
     if (seg==NULL) return;
     tree->addSegment( seg );
+    draw();
 }
 
 void Painter::slotRemove(){
-  setStatusBarText( "slot Load activated !" );
+    tree->removeChildren();
+    draw();
+
+  setStatusBarText( "All children removed ! slot Remove All activated !" );
 }
 
 
@@ -164,7 +171,7 @@ void Painter::draw(){
     labelW->show();
 
     this->setStatusBarText( tree->toString() );
-
+    listRefresh();
 };
 
 
@@ -189,3 +196,36 @@ void Painter::drawSegment( MSegment *seg ){
     this->p->drawPoint( c->x(), c->y() );
 
 }
+
+
+
+
+
+
+
+// **********************
+
+void Painter::listRefresh(){
+
+    //mList->currentIndex();
+    mList->clear();
+    qint8 i=0;
+
+    tree->reset();
+    MSegment* seg = tree->getNextSegment();
+    while ( seg!=NULL ) {
+    mList->addItem( QString::number(i).append( " : " ).append(seg->toString()) ); i++;
+    seg=seg->next;
+    }
+    mList->update();
+
+
+
+}
+
+
+
+
+
+
+

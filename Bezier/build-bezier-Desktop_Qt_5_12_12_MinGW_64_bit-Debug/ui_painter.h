@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
@@ -37,6 +38,7 @@ public:
     QLineEdit *inputCenter;
     QLineEdit *inputEnd;
     QPushButton *drawButton;
+    QListWidget *listView;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *painter)
@@ -84,6 +86,11 @@ public:
         drawButton = new QPushButton(centralwidget);
         drawButton->setObjectName(QString::fromUtf8("drawButton"));
         drawButton->setGeometry(QRect(70, 10, 51, 21));
+        listView = new QListWidget(centralwidget);
+        new QListWidgetItem(listView);
+        new QListWidgetItem(listView);
+        listView->setObjectName(QString::fromUtf8("listView"));
+        listView->setGeometry(QRect(10, 70, 171, 471));
         painter->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(painter);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -109,6 +116,15 @@ public:
         inputCenter->setText(QApplication::translate("painter", "22,23", nullptr));
         inputEnd->setText(QApplication::translate("painter", "30,32", nullptr));
         drawButton->setText(QApplication::translate("painter", "Draw", nullptr));
+
+        const bool __sortingEnabled = listView->isSortingEnabled();
+        listView->setSortingEnabled(false);
+        QListWidgetItem *___qlistwidgetitem = listView->item(0);
+        ___qlistwidgetitem->setText(QApplication::translate("painter", "New Item", nullptr));
+        QListWidgetItem *___qlistwidgetitem1 = listView->item(1);
+        ___qlistwidgetitem1->setText(QApplication::translate("painter", "New Item", nullptr));
+        listView->setSortingEnabled(__sortingEnabled);
+
     } // retranslateUi
 
 };

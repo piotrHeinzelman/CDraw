@@ -48,6 +48,30 @@ QString MTree::toString(){
     return out;
 };
 
+void MTree::fromString( QString *string=nullptr ){
+
+    QString out="{[0,0][150,150][450,300]}";
+    this->reset();
+    while ( current!=NULL ){ out.append( current->getStart()->toString() ); current=current->next;}
+    out.append("}");
+
+};
+
+void MTree::removeChildren() {
+    current=head;
+    while ( current!=NULL ) {
+        MSegment *tmp=current;
+        current=current->next;
+        delete tmp;
+    }
+    this->head=NULL;
+    this->current=NULL;
+
+
+}
+
+
+
 void MTree::save(){
 };
 

@@ -12,6 +12,7 @@ SOURCES += \
     config.cpp \
     main.cpp \
     mfile.cpp \
+    mitem.cpp \
     mpoint.cpp \
     msegment.cpp \
     mtree.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 HEADERS += \
     config.h \
     mfile.h \
+    mitem.h \
     mpoint.h \
     msegment.h \
     mtree.h \
